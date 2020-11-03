@@ -1,5 +1,5 @@
 <?php
-namespace Omnipay\Mercanet\Message;
+namespace Omnipay\Sips\Message;
 
 use Guzzle\Http\ClientInterface;
 

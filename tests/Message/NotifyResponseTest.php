@@ -1,10 +1,10 @@
 <?php
 
-namespace Omnipay\Mercanet\Message;
+namespace Omnipay\Sips\Message;
 
 use Omnipay\Tests\TestCase;
 use Mockery as m;
-use Omnipay\Mercanet\Message\OffsiteNotifyResponse;
+use Omnipay\Sips\Message\OffsiteNotifyResponse;
 
 class NotifyResponseTest extends TestCase
 {

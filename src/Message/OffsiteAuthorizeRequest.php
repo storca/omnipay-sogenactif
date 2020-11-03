@@ -1,10 +1,10 @@
 <?php
-namespace Omnipay\Mercanet\Message;
+namespace Omnipay\Sips\Message;
 
-use Omnipay\Mercanet\Message\AbstractRequest;
+use Omnipay\Sips\Message\AbstractRequest;
 
 /**
- * Mercanet Authorize Request
+ * Sips Authorize Request
  */
 class OffsiteAuthorizeRequest extends OffsiteAbstractRequest
 {
@@ -14,9 +14,9 @@ class OffsiteAuthorizeRequest extends OffsiteAbstractRequest
      *
      * @var string
      */
-    public $testEndpoint = 'https://payment-webinit-mercanet.test.sips-atos.com/paymentInit';
+    public $testEndpoint = 'https://payment-webinit.simu.sogenactif.com/paymentInit';
 
-    public $liveEndpoint = 'https://payment-webinit.mercanet.bnpparibas.net/paymentInit';
+    public $liveEndpoint = 'https://payment-webinit.sogenactif.com/paymentInit';
 
     /**
      * sendData function. In this case, where the browser is to be directly it constructs and returns a response object

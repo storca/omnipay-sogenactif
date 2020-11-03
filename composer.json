@@ -1,7 +1,7 @@
 {
-  "name": "fuzion/omnipay-mercanet",
+  "name": "gvalfr35/omnipay-sogenactif",
   "type": "library",
-  "description": "Mercanet support for Omnipay payment processing library",
+  "description": "Sogenactif SIPS(v2) support for Omnipay payment processing library",
   "keywords": [
     "shell",
     "gateway",
@@ -10,18 +10,18 @@
     "pay",
     "payment",
     "purchase",
-    "mercanet"
+    "Sips"
   ],
-  "homepage": "https://github.com/eileenmcnaughton/omnipay-mercanet",
+  "homepage": "https://github.com/GValFr35/omnipay-sogenactif",
   "license": "MIT",
   "authors": [
     {
-      "name": "Eileen McNaughton",
-      "email": "eileen@fuzion.co.nz"
+      "name": "Valéry Gouleau",
+      "email": "v.gouleau@cyim.com"
     }
   ],
   "autoload": {
-    "psr-4": { "Omnipay\\Mercanet\\" : "src/" }
+    "psr-4": { "Omnipay\\Sips\\" : "src/" }
   },
     "require": {
         "omnipay/common": "^3"

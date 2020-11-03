@@ -1,5 +1,5 @@
 <?php
-namespace Omnipay\Mercanet\Message;
+namespace Omnipay\Sips\Message;
 
 use Omnipay\Common\Exception\InvalidRequestException;
 

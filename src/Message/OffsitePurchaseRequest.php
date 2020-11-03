@@ -1,5 +1,5 @@
 <?php
-namespace Omnipay\Mercanet\Message;
+namespace Omnipay\Sips\Message;
 
 /**
  * Purchase Request

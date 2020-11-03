@@ -1,15 +1,15 @@
 <?php
-namespace Omnipay\Mercanet;
+namespace Omnipay\Sips;
 
 use Omnipay\Tests\GatewayTestCase;
-use Omnipay\Mercanet\OffsiteGateway;
+use Omnipay\Sips\OffsiteGateway;
 use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\CreditCard;
 
 class OffsiteGatewayTest extends GatewayTestCase
 {
   /**
-   * @var Omnipay/Mercanet/SystemGateway
+   * @var Omnipay/Sips/SystemGateway
    */
     public $gateway;
 
@@ -27,33 +27,33 @@ class OffsiteGatewayTest extends GatewayTestCase
     public function testPurchase()
     {
         $response = $this->gateway->purchase(array('testMode' => TRUE, 'amount' => '10.00', 'currency' => 'EUR', 'card' => $this->card))->send();
-        $this->assertInstanceOf('Omnipay\Mercanet\Message\OffsiteAuthorizeResponse', $response);
+        $this->assertInstanceOf('Omnipay\Sips\Message\OffsiteAuthorizeResponse', $response);
         $this->assertFalse($response->isSuccessful());
         $this->assertTrue($response->isRedirect());
         $this->assertNotEmpty($response->getRedirectUrl());
-        $this->assertSame('https://payment-webinit-mercanet.test.sips-atos.com/paymentInit', $response->getRedirectUrl());
+        $this->assertSame('https://payment-webinit-Sips.test.sips-atos.com/paymentInit', $response->getRedirectUrl());
         $this->assertTrue($response->isTransparentRedirect());
     }
 
     public function testAuthorize()
     {
         $response = $this->gateway->authorize(array('amount' => '10.00', 'currency' => 'EUR', 'card' => $this->card))->send();
-        $this->assertInstanceOf('Omnipay\Mercanet\Message\OffsiteAuthorizeResponse', $response);
+        $this->assertInstanceOf('Omnipay\Sips\Message\OffsiteAuthorizeResponse', $response);
         $this->assertFalse($response->isSuccessful());
         $this->assertTrue($response->isRedirect());
         $this->assertNotEmpty($response->getRedirectUrl());
-        $this->assertSame('https://payment-webinit.mercanet.bnpparibas.net/paymentInit', $response->getRedirectUrl());
+        $this->assertSame('https://payment-webinit.Sips.bnpparibas.net/paymentInit', $response->getRedirectUrl());
         $this->assertTrue($response->isTransparentRedirect());
     }
 
     public function testCapture()
     {
         $response = $this->gateway->capture(array('amount' => '10.00', 'currency' => 'EUR', 'card' => $this->card, 'testMode' => true))->send();
-        $this->assertInstanceOf('Omnipay\Mercanet\Message\OffsiteAuthorizeResponse', $response);
+        $this->assertInstanceOf('Omnipay\Sips\Message\OffsiteAuthorizeResponse', $response);
         $this->assertFalse($response->isSuccessful());
         $this->assertTrue($response->isRedirect());
         $this->assertNotEmpty($response->getRedirectUrl());
-        $this->assertSame('https://payment-webinit-mercanet.test.sips-atos.com/paymentInit', $response->getRedirectUrl());
+        $this->assertSame('https://payment-webinit-Sips.test.sips-atos.com/paymentInit', $response->getRedirectUrl());
         $this->assertTrue($response->isTransparentRedirect());
     }
 
@@ -70,14 +70,14 @@ class OffsiteGatewayTest extends GatewayTestCase
         );
         $this->setupGateway();
         $request = $this->gateway->acceptNotification([]);
-        $this->assertInstanceOf('Omnipay\Mercanet\Message\OffsiteNotifyRequest', $request);
+        $this->assertInstanceOf('Omnipay\Sips\Message\OffsiteNotifyRequest', $request);
     }
 
     public function testCompletePurchase()
     {
         $request = $this->gateway->completePurchase(array('amount' => '10.00',));
 
-        $this->assertInstanceOf('Omnipay\Mercanet\Message\OffsiteCompletePurchaseRequest', $request);
+        $this->assertInstanceOf('Omnipay\Sips\Message\OffsiteCompletePurchaseRequest', $request);
         $this->assertSame('10.00', $request->getAmount());
     }
 

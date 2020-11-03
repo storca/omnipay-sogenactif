@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\Mercanet\Message;
+namespace Omnipay\Sips\Message;
 
 use Omnipay\Tests\TestCase;
 use Mockery as m;

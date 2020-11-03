@@ -1,9 +1,9 @@
 <?php
-namespace Omnipay\Mercanet\Message;
+namespace Omnipay\Sips\Message;
 
 use Omnipay\Common\Message\AbstractResponse;
 use Omnipay\Common\Message\RequestInterface;
-use Omnipay\Mercanet\Message\OffsiteNotificationTrait;
+use Omnipay\Sips\Message\OffsiteNotificationTrait;
 
 /**
  * Complete Authorize Response

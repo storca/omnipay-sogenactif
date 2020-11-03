@@ -1,17 +1,13 @@
-omnipay-mercanet
+omnipay-sogenactif
 =============
 
-**Mercanet driver for the Omnipay PHP payment processing library**
-
-[![Build Status](https://travis-ci.org/eileenmcnaughton/omnipay-mercanet.png?branch=master)](https://travis-ci.org/eileenmcnaughton/omnipay-mercanet)
-[![Latest Stable Version](https://poser.pugx.org/eileenmcnaughton/omnipay-mercanet/version.png)](https://packagist.org/eileenmcnaughton/omnipay-mercanet)
-[![Total Downloads](https://poser.pugx.org/fuzion/omnipay-mercanet/d/total.png)](https://packagist.org/fuzion/omnipay-mercanet)
+**Sogenactif SIPS-v2 driver for the Omnipay PHP payment processing library**
 
 ## Basic Usage
 
 The following gateways are provided by this package:
 
-* Mercanet_Offsite
+* Sogenactif_Offsite
 
 For general usage instructions, please see the main [Omnipay](https://github.com/thephpleague/omnipay)
 repository.
@@ -25,7 +21,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "fuzion/omnipay-mercanet": "~3.0"
+        "GValFr35/omnipay-sogenactif": "~3.0"
     }
 }
 ```
@@ -52,6 +48,6 @@ or better yet, fork the library and submit a pull request.
 
 ## Troubleshooting
 
-An incorrect currency will return an error like: 
+An incorrect currency will return an error like:
 
 Technical problem  : code=03 message=None of the merchant's payment means is compliant with the transaction context

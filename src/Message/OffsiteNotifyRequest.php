@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\Mercanet\Message;
+namespace Omnipay\Sips\Message;
 
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
 use Omnipay\Common\Exception\InvalidResponseException;
@@ -8,7 +8,7 @@ use Omnipay\Common\Message\NotificationInterface;
 use Omnipay\Common\Http\ClientInterface;
 
 /**
- * Mercanet Notification.
+ * Sips Notification.
  * The gateway will send the results of Server transactions here.
  */
 class OffsiteNotifyRequest extends OffsiteAbstractRequest implements NotificationInterface
