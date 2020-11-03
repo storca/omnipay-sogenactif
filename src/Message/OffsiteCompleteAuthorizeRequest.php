@@ -1,5 +1,5 @@
 <?php
-namespace Omnipay\Sips\Message;
+namespace Omnipay\Sogenactif\Message;
 
 use Guzzle\Http\ClientInterface;
 

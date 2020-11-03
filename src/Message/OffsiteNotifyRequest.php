@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\Sips\Message;
+namespace Omnipay\Sogenactif\Message;
 
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
 use Omnipay\Common\Exception\InvalidResponseException;
@@ -8,7 +8,7 @@ use Omnipay\Common\Message\NotificationInterface;
 use Omnipay\Common\Http\ClientInterface;
 
 /**
- * Sips Notification.
+ * Sogenactif Notification.
  * The gateway will send the results of Server transactions here.
  */
 class OffsiteNotifyRequest extends OffsiteAbstractRequest implements NotificationInterface

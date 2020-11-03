@@ -1,7 +1,7 @@
 {
   "name": "gvalfr35/omnipay-sogenactif",
   "type": "library",
-  "description": "Sogenactif SIPS(v2) support for Omnipay payment processing library",
+  "description": "Sogenactif Sogenactif(v2) support for Omnipay payment processing library",
   "keywords": [
     "shell",
     "gateway",
@@ -10,7 +10,7 @@
     "pay",
     "payment",
     "purchase",
-    "Sips"
+    "Sogenactif"
   ],
   "homepage": "https://github.com/GValFr35/omnipay-sogenactif",
   "license": "MIT",
@@ -21,7 +21,7 @@
     }
   ],
   "autoload": {
-    "psr-4": { "Omnipay\\Sips\\" : "src/" }
+    "psr-4": { "Omnipay\\Sogenactif\\" : "src/" }
   },
     "require": {
         "omnipay/common": "^3"

@@ -1,5 +1,5 @@
 <?php
-namespace Omnipay\Sips;
+namespace Omnipay\Sogenactif;
 
 use Omnipay\Common\AbstractGateway;
 
@@ -16,7 +16,7 @@ class OffsiteGateway extends AbstractGateway
      */
     public function getName()
     {
-        return 'Sips_Offsite';
+        return 'Sogenactif_Offsite';
     }
 
     /**
@@ -41,59 +41,59 @@ class OffsiteGateway extends AbstractGateway
      *
      * @param array $parameters
      *
-     * @return \Omnipay\Sips\Message\OffsiteAuthorizeRequest
+     * @return \Omnipay\Sogenactif\Message\OffsiteAuthorizeRequest
      */
     public function authorize(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Sips\Message\OffsiteAuthorizeRequest', $parameters);
+        return $this->createRequest('\Omnipay\Sogenactif\Message\OffsiteAuthorizeRequest', $parameters);
     }
 
     /**
      *
      * @param array $parameters
-     * @return \Omnipay\Sips\Message\OffsiteCaptureRequest
+     * @return \Omnipay\Sogenactif\Message\OffsiteCaptureRequest
      */
     public function capture(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Sips\Message\OffsiteCaptureRequest', $parameters);
+        return $this->createRequest('\Omnipay\Sogenactif\Message\OffsiteCaptureRequest', $parameters);
     }
 
     /**
      *
      * @param array $parameters
-     * @return \Omnipay\Sips\Message\OffsitePurchaseRequest
+     * @return \Omnipay\Sogenactif\Message\OffsitePurchaseRequest
      */
     public function purchase(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Sips\Message\OffsitePurchaseRequest', $parameters);
+        return $this->createRequest('\Omnipay\Sogenactif\Message\OffsitePurchaseRequest', $parameters);
     }
 
     /**
      *
      * @param array $parameters
-     * @return \Omnipay\Sips\Message\OffsiteCompletePurchaseRequest
+     * @return \Omnipay\Sogenactif\Message\OffsiteCompletePurchaseRequest
      */
     public function completePurchase(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Sips\Message\OffsiteCompletePurchaseRequest', $parameters);
+        return $this->createRequest('\Omnipay\Sogenactif\Message\OffsiteCompletePurchaseRequest', $parameters);
     }
 
     /**
      * @param array $parameters
-     * @return \Omnipay\Sips\Message\CompleteAuthorizeRequest
+     * @return \Omnipay\Sogenactif\Message\CompleteAuthorizeRequest
      */
     public function completeAuthorize(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Sips\Message\OffsiteCompleteAuthorizeRequest', $parameters);
+        return $this->createRequest('\Omnipay\Sogenactif\Message\OffsiteCompleteAuthorizeRequest', $parameters);
     }
 
     /**
      * @param array $parameters
-     * @return \Omnipay\Sips\Message\CompleteAuthorizeRequest
+     * @return \Omnipay\Sogenactif\Message\CompleteAuthorizeRequest
      */
     public function acceptNotification(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Sips\Message\OffsiteNotifyRequest', $parameters);
+        return $this->createRequest('\Omnipay\Sogenactif\Message\OffsiteNotifyRequest', $parameters);
     }
 
     public function getMerchantID()

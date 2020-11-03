@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\Sips\Message;
+namespace Omnipay\Sogenactif\Message;
 
 use Omnipay\Common\Exception\InvalidResponseException;
 use Omnipay\Common\Message\RequestInterface;
@@ -66,7 +66,7 @@ class OffsiteNotifyResponse implements \Omnipay\Common\Message\NotificationInter
     /**
      * Confirm
      *
-     * Notify Sips you received the payment details and wish to confirm the payment.
+     * Notify Sogenactif you received the payment details and wish to confirm the payment.
      *
      * @param string $nextUrl URL to forward the customer to.
      * @param string $detail Optional human readable reasons for accepting the transaction.

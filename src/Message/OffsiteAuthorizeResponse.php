@@ -1,5 +1,5 @@
 <?php
-namespace Omnipay\Sips\Message;
+namespace Omnipay\Sogenactif\Message;
 
 use Omnipay\Common\Message\AbstractResponse;
 use Omnipay\Common\Message\RequestInterface;

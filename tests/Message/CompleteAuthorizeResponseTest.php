@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\Sips\Message;
+namespace Omnipay\Sogenactif\Message;
 
 use Omnipay\Tests\TestCase;
 use Mockery as m;

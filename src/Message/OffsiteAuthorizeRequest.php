@@ -1,10 +1,10 @@
 <?php
-namespace Omnipay\Sips\Message;
+namespace Omnipay\Sogenactif\Message;
 
-use Omnipay\Sips\Message\AbstractRequest;
+use Omnipay\Sogenactif\Message\AbstractRequest;
 
 /**
- * Sips Authorize Request
+ * Sogenactif Authorize Request
  */
 class OffsiteAuthorizeRequest extends OffsiteAbstractRequest
 {

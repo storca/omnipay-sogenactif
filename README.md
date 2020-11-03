@@ -1,7 +1,7 @@
 omnipay-sogenactif
 =============
 
-**Sogenactif SIPS-v2 driver for the Omnipay PHP payment processing library**
+**Sogenactif Sogenactif-v2 driver for the Omnipay PHP payment processing library**
 
 ## Basic Usage
 
