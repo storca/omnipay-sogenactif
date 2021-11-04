@@ -1,39 +1,46 @@
 {
-  "name": "gvalfr35/omnipay-sogenactif",
-  "type": "library",
-  "description": "Sogenactif Sogenactif(v2) support for Omnipay payment processing library",
-  "keywords": [
-    "shell",
-    "gateway",
-    "merchant",
-    "omnipay",
-    "pay",
-    "payment",
-    "purchase",
-    "Sogenactif",
-    "Attendize"
-  ],
-  "homepage": "https://github.com/storca/omnipay-sogenactif",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "storca",
-      "email": "storca@mail.com"
-    }
-  ],
-  "autoload": {
-    "psr-4": { "Omnipay\\Sogenactif\\" : "src/" }
-  },
+    "name": "storca/omnipay-sogenactif",
+    "description": "Implementation of Sogenactif API in Omnipay",
+    "keywords": [
+        "omnipay",
+        "sogenactif"
+    ],
+    "homepage": "https://github.com/storca/omnipay-sogenactif",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "storca",
+            "email": "storca@mail.com",
+            "homepage": "https://github.com/storca"
+        }
+    ],
     "require": {
-        "omnipay/common": "^3"
+        "omnipay/common": "v3.0-alpha.2"
     },
     "require-dev": {
-        "omnipay/tests": "^3",
+        "omnipay/tests": "~3.0",
         "squizlabs/php_codesniffer": "^3"
     },
+    "autoload": {
+        "psr-4": {
+            "Omnipay\\Skeleton\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "League\\Sogenactif\\Test\\": "tests"
+        }
+    },
     "scripts": {
-        "test": "vendor/bin/phpunit",
+        "test": "phpunit",
         "check-style": "phpcs -p --standard=PSR2 src/",
         "fix-style": "phpcbf -p --standard=PSR2 src/"
-    }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
