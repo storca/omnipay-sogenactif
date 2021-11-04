@@ -37,6 +37,20 @@ abstract class OffsiteAbstractRequest extends \Omnipay\Common\Message\AbstractRe
         $this->interfaceVersion = $interfaceVersion;
     }
 
+    /**
+     * These functions are implemented in the childs of OffSiteAbstractRequest
+     */
+    abstract public function getRequiredCoreFields();
+    abstract public function getRequiredCardFields();
+    /**
+     * @return array
+     */
+    abstract public function getBaseData();
+    /**
+     * @return array
+     */
+    abstract public function getTransactionData();
+
     public function getData()
     {
         foreach ($this->getRequiredCoreFields() as $field) {
@@ -45,18 +59,19 @@ abstract class OffsiteAbstractRequest extends \Omnipay\Common\Message\AbstractRe
         $this->validateCardFields();
         return $this->getBaseData() + $this->getTransactionData();
     }
-
+    
     public function validateCardFields()
     {
         $card = $this->getCard();
         foreach ($this->getRequiredCardFields() as $field) {
-            $fn = 'get' . ucfirst($field);
-            $result = $card->$fn();
+            $fn = 'get' . ucfirst($field); //generate function name
+            $result = $card->$fn(); //call function getSomething
             if (empty($result)) {
                 throw new InvalidRequestException("The $field parameter is required");
             }
         }
     }
+
     public function getMerchantID()
     {
         return $this->getParameter('merchant_id');
@@ -103,8 +118,9 @@ abstract class OffsiteAbstractRequest extends \Omnipay\Common\Message\AbstractRe
         return $this->setParameter('transactionType', $value);
     }
 
-    public function getSeal($data)
+    public function getSeal($data_utf8)
     {
-        return hash('sha256', $data . $this->getSecretKey());
+        //return hash('sha256', $data . $this->getSecretKey());
+        return hash_hmac('sha256', $data_utf8, $this->getSecretKey());
     }
 }

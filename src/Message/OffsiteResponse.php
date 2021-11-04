@@ -91,7 +91,7 @@ class OffsiteResponse extends AbstractResponse implements RedirectResponseInterf
      */
     public function getRedirectMethod()
     {
-        return 'GET';
+        return 'POST';
     }
 
     public function getRedirectData()
@@ -103,9 +103,11 @@ class OffsiteResponse extends AbstractResponse implements RedirectResponseInterf
         }
         $data = implode('|', $formData);
         return array(
-            'data' => $data,
-            'InterfaceVersion' => 'HP_2.18',
-            'seal' => hash('sha256', $data . $this->getSecretKey()),
+            'Data' => $data,
+            'InterfaceVersion' => 'HP_2.39',
+            //'seal' => hash('sha256', $data . $this->getSecretKey()),
+            'Seal' => hash_hmac('sha256', $data, $this->getSecretKey()),
+            'SealAlgorithm' => 'HMAC-SHA-256'
         );
     }
 }

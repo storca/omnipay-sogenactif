@@ -62,7 +62,7 @@ class OffsiteAuthorizeRequest extends OffsiteAbstractRequest
      */
     public function getTransactionData()
     {
-        return array
+        $data_array = array
         (
             'data' => array(
                 'amount' => $this->getAmountInteger(),
@@ -74,6 +74,20 @@ class OffsiteAuthorizeRequest extends OffsiteAbstractRequest
                 'transactionReference' => $this->getTransactionId(),
             ),
         );
+        //this data is later encoded in OffsiteResponse::getRedirectData
+
+        /**
+        $encoded_data = '';
+        foreach($data_array as $key => $value)
+        {
+            $encoded_data = $encoded_data . $key . '=' . $value .'|';
+        }
+
+        return utf8_encode(substr($encoded_data, 0, -1));
+        */
+
+        return $data_array;
+
     }
 
     /**

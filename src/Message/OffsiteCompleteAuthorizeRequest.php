@@ -1,7 +1,9 @@
 <?php
 namespace Omnipay\Sogenactif\Message;
 
-use Guzzle\Http\ClientInterface;
+//use Guzzle\Http\ClientInterface;
+
+use Omnipay\Common\Exception\InvalidRequestException;
 
 /**
  * Sample Complete Authorize Response
@@ -14,6 +16,11 @@ use Guzzle\Http\ClientInterface;
 class OffsiteCompleteAuthorizeRequest extends OffsiteAbstractRequest
 {
 
+    public function getRequiredCoreFields() {}
+    public function getRequiredCardFields() {}
+    public function getBaseData() {}
+    public function getTransactionData() {}
+
     public function sendData($data)
     {
         return $this->response = new OffsiteCompleteAuthorizeResponse($this, $data);
@@ -21,10 +28,17 @@ class OffsiteCompleteAuthorizeRequest extends OffsiteAbstractRequest
 
     public function getData()
     {
-        if (strtolower($this->httpRequest->request->get('x_MD5_Hash')) !== $this->getHash()) {
+        //BUG: getHash does not exist
+        if ($this->httpRequest->request->get('Seal') !== $this->getHash()) {
             throw new InvalidRequestException('Incorrect hash');
         }
 
         return $this->httpRequest->request->all();
+    }
+
+    public function getHash()
+    {
+        //TODO
+        return '';
     }
 }

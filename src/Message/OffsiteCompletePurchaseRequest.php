@@ -18,6 +18,9 @@ class OffsiteCompletePurchaseRequest extends OffsiteCompleteAuthorizeRequest
         if (!$this->getSeal($this->data) === $this->seal) {
             throw new InvalidResponseException('Reponse not signed correctly');
         }
+        /**
+         * Convert the sogenactif data format to php array()
+         */
         $parts = explode('|', $this->data);
         $data = array();
         foreach ($parts as $part) {
