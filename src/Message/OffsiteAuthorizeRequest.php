@@ -19,7 +19,12 @@ class OffsiteAuthorizeRequest extends OffsiteAbstractRequest
     public $liveEndpoint = 'https://payment-webinit.sogenactif.com/paymentInit';
 
     /**
-     * sendData function. In this case, where the browser is to be directly it constructs and returns a response object
+     * sendData function. 
+     * In this case, we do not need to make a request using httpClient because the client will enter his details
+     * on sogenactif's page.
+     * We only need to create a sort of "virtual" response that is only a redirect, which redirects the client
+     * to sogenactif's payment page.
+     * See OffSiteResponse.php, where the redirect is actually built
      * @param mixed $data
      * @return \Omnipay\Common\Message\ResponseInterface|OffsiteAuthorizeResponse
      */

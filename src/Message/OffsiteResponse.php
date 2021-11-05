@@ -110,4 +110,8 @@ class OffsiteResponse extends AbstractResponse implements RedirectResponseInterf
             'SealAlgorithm' => 'HMAC-SHA-256'
         );
     }
+    public function getSeal()
+    {
+        
+    }
 }
