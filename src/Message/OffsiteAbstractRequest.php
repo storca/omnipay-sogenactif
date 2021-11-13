@@ -42,10 +42,9 @@ abstract class OffsiteAbstractRequest extends \Omnipay\Common\Message\AbstractRe
      */
     abstract public function getRequiredCoreFields();
     abstract public function getRequiredCardFields();
-    /**
-     * @return array
-     */
     abstract public function getBaseData();
+    abstract public function getEndPoint();
+
     /**
      * @return array
      */
@@ -53,13 +52,16 @@ abstract class OffsiteAbstractRequest extends \Omnipay\Common\Message\AbstractRe
 
     public function getData()
     {
+        //Check if each required field is correctly filled
         foreach ($this->getRequiredCoreFields() as $field) {
             $this->validate($field);
         }
-        $this->validateCardFields();
-        return $this->getBaseData() + $this->getTransactionData();
+        //$this->validateCardFields(); unused in Sogenactif's API
+        return array_merge($this->getBaseData(), $this->getTransactionData());
     }
     
+    /**
+     * Unused in Sogenactif's API
     public function validateCardFields()
     {
         $card = $this->getCard();
@@ -71,6 +73,7 @@ abstract class OffsiteAbstractRequest extends \Omnipay\Common\Message\AbstractRe
             }
         }
     }
+    */
 
     public function getMerchantID()
     {
@@ -118,9 +121,9 @@ abstract class OffsiteAbstractRequest extends \Omnipay\Common\Message\AbstractRe
         return $this->setParameter('transactionType', $value);
     }
 
-    public function getSeal($data_utf8)
+    public function getSeal($data_str)
     {
         //return hash('sha256', $data . $this->getSecretKey());
-        return hash_hmac('sha256', $data_utf8, $this->getSecretKey());
+        return hash_hmac('sha256', $data_str, $this->getSecretKey());
     }
 }

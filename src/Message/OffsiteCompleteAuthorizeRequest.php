@@ -13,19 +13,22 @@ use Omnipay\Common\Exception\InvalidRequestException;
  * The data passed to these requests is most often the content of the POST and this class is responsible for
  * interpreting it
  */
-class OffsiteCompleteAuthorizeRequest extends OffsiteAbstractRequest
+abstract class OffsiteCompleteAuthorizeRequest extends OffsiteAbstractRequest
 {
 
-    public function getRequiredCoreFields() {}
-    public function getRequiredCardFields() {}
-    public function getBaseData() {}
-    public function getTransactionData() {}
+    abstract public function getRequiredCoreFields();
+    abstract public function getRequiredCardFields();
+    abstract public function getBaseData();
+    abstract public function getTransactionData();
 
     public function sendData($data)
     {
         return $this->response = new OffsiteCompleteAuthorizeResponse($this, $data);
     }
 
+    abstract public function getData();
+    
+    /**
     public function getData()
     {
         //BUG: getHash does not exist
@@ -38,7 +41,8 @@ class OffsiteCompleteAuthorizeRequest extends OffsiteAbstractRequest
 
     public function getHash()
     {
-        //TODO
-        return '';
-    }
+        $data = $this->httpRequest->request->get('Data');
+
+        return hash_hmac('sha256', utf8_encode($data), utf8_encode($this->getSecretKey()));
+    }*/
 }

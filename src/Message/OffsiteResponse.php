@@ -5,6 +5,8 @@ use Omnipay\Common\Message\AbstractResponse;
 use Omnipay\Common\Message\RequestInterface;
 use Omnipay\Common\Message\RedirectResponseInterface;
 
+use Omnipay\Sogenactif\Message\OffsiteAbstractRequest;
+
 /**
  * Response
  */
@@ -17,6 +19,13 @@ class OffsiteResponse extends AbstractResponse implements RedirectResponseInterf
    * @var string
    */
     protected $endpoint;
+
+    public function __construct(OffsiteAbstractRequest $request, $data)
+    {
+        $this->request = $request;
+        $this->data = $data;
+        $this->endpoint = ($request->getEndPoint());
+    }
 
     /**
      * @return string
@@ -34,20 +43,14 @@ class OffsiteResponse extends AbstractResponse implements RedirectResponseInterf
         $this->endpoint = $endpoint;
     }
 
-    public function __construct(RequestInterface $request, $data)
-    {
-        $this->request = $request;
-        $this->data = $data;
-        $this->endpoint = ($request->getEndPoint());
-    }
-
     /**
      * @return string
      */
-    public function getSecretKey()
+    private function getSecretKey()
     {
         return $this->data['secret_key'];
     }
+
     /**
      * Has the call to the processor succeeded?
      * When we need to redirect the browser we return false as the transaction is not yet complete
@@ -61,6 +64,7 @@ class OffsiteResponse extends AbstractResponse implements RedirectResponseInterf
 
     /**
      * Should the user's browser be redirected?
+     * Yes, it is then redirected using the functions below 
      *
      * @return bool
      */
@@ -98,20 +102,25 @@ class OffsiteResponse extends AbstractResponse implements RedirectResponseInterf
     {
         $allFields = $this->getData();
         $formData = array();
+        //the 'data' field was buit in OffsiteAuthoriseRequest.php in getTransactionData
         foreach ($allFields['data'] as $field => $value) {
             $formData[] = "{$field}={$value}";
         }
         $data = implode('|', $formData);
+
         return array(
             'Data' => $data,
             'InterfaceVersion' => 'HP_2.39',
             //'seal' => hash('sha256', $data . $this->getSecretKey()),
-            'Seal' => hash_hmac('sha256', $data, $this->getSecretKey()),
+            'Seal' => $this->getSeal($data),
             'SealAlgorithm' => 'HMAC-SHA-256'
         );
     }
-    public function getSeal()
+    /**
+     * Generate seal according to Sogenactif's documentation
+     */
+    public function getSeal($data)
     {
-        
+        return hash_hmac('sha256', utf8_encode($data), utf8_encode($this->getSecretKey()));
     }
 }

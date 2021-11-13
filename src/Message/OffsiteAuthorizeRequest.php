@@ -77,22 +77,12 @@ class OffsiteAuthorizeRequest extends OffsiteAbstractRequest
                 'automaticResponseUrl' => $this->getNotifyUrl(),
                 'normalReturnUrl'=> $this->getReturnUrl(),
                 'transactionReference' => $this->getTransactionId(),
+                'orderChannel' => 'INTERNET' //mandatory in sogenactif's API
             ),
         );
         //this data is later encoded in OffsiteResponse::getRedirectData
 
-        /**
-        $encoded_data = '';
-        foreach($data_array as $key => $value)
-        {
-            $encoded_data = $encoded_data . $key . '=' . $value .'|';
-        }
-
-        return utf8_encode(substr($encoded_data, 0, -1));
-        */
-
         return $data_array;
-
     }
 
     /**

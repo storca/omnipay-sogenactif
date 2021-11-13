@@ -8,6 +8,10 @@ use Omnipay\Common\Exception\InvalidResponseException;
  */
 class OffsiteCompletePurchaseRequest extends OffsiteCompleteAuthorizeRequest
 {
+    public function __construct()
+    {
+        
+    }
     public function sendData($data)
     {
         return $this->response = new OffsiteCompletePurchaseResponse($this, $data);

@@ -29,10 +29,11 @@ class OffsiteGateway extends AbstractGateway
     public function getDefaultParameters()
     {
         return array(
+          'key_version' => 2,
           'merchant_id' => '',
           'secret_key' => '',
           'testMode' => false,
-          'key_version' => 2,
+          'interfaceVersion' => 'HP_2.39'
         );
     }
 
@@ -105,7 +106,8 @@ class OffsiteGateway extends AbstractGateway
     {
         return $this->setParameter('merchant_id', $value);
     }
-    public function getSecretKey()
+
+    private function getSecretKey()
     {
         return $this->getParameter('secret_key');
     }
@@ -113,6 +115,16 @@ class OffsiteGateway extends AbstractGateway
     public function setSecretKey($value)
     {
         return $this->setParameter('secret_key', $value);
+    }
+
+    public function setInterfaceVersion($value)
+    {
+        return $this->setParameter('interfaceVersion', $value);
+    }
+
+    public function getInterfaceVersion()
+    {
+        return $this->getParameter('interfaceVersion');
     }
 
     /**
